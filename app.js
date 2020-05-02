@@ -21,10 +21,10 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
-mongoose.connect(url);
+// var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+// mongoose.connect(url);
 // mongoose.connect("mongodb://localhost/yelp_camp");
-// mongoose.connect("mongodb+srv://dianethepenguin:Fishy234!@cluster0-kwaew.mongodb.net/yelp_camp?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://dianethepenguin:Fishy234!@cluster0-kwaew.mongodb.net/yelp_camp?retryWrites=true&w=majority");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"))
@@ -55,7 +55,7 @@ app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-// process.env.PORT, process.env.IP
-app.listen(3000, function(){
+
+app.listen(process.env.PORT, process.env.IP, function(){
    console.log("The YelpCamp Server Has Started!");
 });
