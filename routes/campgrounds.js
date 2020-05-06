@@ -51,7 +51,7 @@ router.get("/:id", function(req, res){
 	//find the campground with provided ID
 	Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
 		if(err || !foundCampground) {
-			req.flash("error", "Campground not found");
+			req.flash("error", "MooShoe not found");
 			res.redirect("back");
 		}
 		else {
